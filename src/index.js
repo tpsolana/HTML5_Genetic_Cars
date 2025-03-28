@@ -707,4 +707,6 @@ function cw_setEliteSize(clones) {
   generationConfig.constants.championLength = parseInt(clones, 10);
 }
 
+
+
 cw_init();

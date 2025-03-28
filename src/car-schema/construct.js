@@ -64,5 +64,12 @@ function generateSchema(values){
       limit: values.wheelCount,
       factor: 1,
     },
+    torqueMultiplier: {
+      type: "float",
+      length: 1, 
+      min: values.minTorqueMultiplier,
+      range: values.torqueMultiplierRange,
+      factor: 1,
+    },
   };
 }

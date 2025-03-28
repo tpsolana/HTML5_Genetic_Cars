@@ -38,7 +38,14 @@ function defToCar(normal_def, world, constants){
     var randvertex = instance.chassis.vertex_list[car_def.wheel_vertex[i]];
     joint_def.localAnchorA.Set(randvertex.x, randvertex.y);
     joint_def.localAnchorB.Set(0, 0);
-    joint_def.maxMotorTorque = torque;
+
+    var userTorque = document.querySelector("#torquemultiplier") ? parseFloat(document.querySelector("#torquemultiplier").value) : null;
+    if (userTorque !== null) {
+      car_def.torqueMultiplier = userTorque; 
+      console.log("Applied user torque: " + userTorque + "x");
+    }
+
+    joint_def.maxMotorTorque = 180.0 * car_def.torqueMultiplier;
     joint_def.motorSpeed = -constants.motorSpeed;
     joint_def.enableMotor = true;
     joint_def.bodyA = instance.chassis;
